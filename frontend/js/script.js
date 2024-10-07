@@ -60,6 +60,7 @@ const scrollScreen = () => {
     })
 }
 
+//Exibir a menagem
 const processMessage = ({ data }) => {
     const { userId, userName, userColor, content } = JSON.parse(data)
 
@@ -83,12 +84,14 @@ const handleLogin = (event) => {
     login.style.display = "none"
     chat.style.display = "flex"
 
-    websocket = new WebSocket("ws://localhost:8080")
+    websocket = new WebSocket("wss://projeto-chat-ojp7.onrender.com")
+    // websocket = new WebSocket("ws://localhost:8080")
     // websocket.onopen =()=>
     //     websocket.send(`Usuário: ${user.name} entrou no chat`)
     websocket.onmessage = processMessage
 }
 
+//função que vai receber a mensagem
 const sendMessage = (event) => {
     event.preventDefault()
 
